@@ -26,7 +26,7 @@ def main():
     input_type = input()
     
     if input_type == "I":
-        n = int(input("Enter number of nodes: "))
+        n = int(input())
         parents = list(map(int, input().split()))
         
     elif input_type == "F":
