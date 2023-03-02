@@ -23,8 +23,33 @@ def compute_height(n, parents):
 
 
 def main():
-    n = int(input())
-    parents = list(map(int, input().split()))
+    # Implement input from keyboard or file
+    input_type = input()
+    
+    if input_type == "I":
+        n = int(input("Enter number of nodes: "))
+        parents = list(map(int, input().split()))
+        
+    elif input_type == "F":
+        while True:
+            filename = input()
+            if "a" in filename:
+                print("Invalid file name. File name cannot contain the letter 'a'.")
+            else:
+                break
+                
+        try:
+            with open(f"./input/{filename}.txt") as f:
+                n = int(f.readline().strip())
+                parents = list(map(int, f.readline().strip().split()))
+        except FileNotFoundError:
+            print(f"File {filename}.txt not found.")
+            return
+    
+    else:
+        print("Invalid input type.")
+        return
+    
     print(compute_height(n, parents))
 
 
